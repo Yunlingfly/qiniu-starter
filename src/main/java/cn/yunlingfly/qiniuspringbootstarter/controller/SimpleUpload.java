@@ -128,15 +128,15 @@ public class SimpleUpload {
         // 上传文件的路径
         String filePath = "images/qishi.png";
         // 要上传的空间
-        String bucketName = "test";
         // 上传到七牛后保存的文件名
         String key = "qishi.png";
         // 这里的filepath可以直接替换成File如下注释所示
         // File file=new File(filePath);
         // new SimpleUpload().upload(file, key, bucketName);
-//        new SimpleUpload().upload(filePath, key, bucketName);
-        new SimpleUpload().deleteFile(key, bucketName);
-        System.out.println("删除完成");
+        new SimpleUpload().upload(filePath, key, AccountMgr.BUCKETNAME);
+        System.out.println("上传完成");
+//        new SimpleUpload().deleteFile(key, bucketName);
+//        System.out.println("删除完成");
 //        new SimpleUpload().upload(filePath, key, bucketName);
 
     }
