@@ -1,4 +1,4 @@
-package cn.yunlingfly.qiniuspringbootstarter.util;
+package cn.yunlingfly.qiniuspringbootstarter.infra.util;
 
 /**
  * 账户信息，获取授权认证

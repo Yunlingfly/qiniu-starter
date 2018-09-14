@@ -1,6 +1,6 @@
-package cn.yunlingfly.qiniuspringbootstarter.controller;
+package cn.yunlingfly.qiniuspringbootstarter.api.controller;
 
-import cn.yunlingfly.qiniuspringbootstarter.util.AccountMgr;
+import cn.yunlingfly.qiniuspringbootstarter.infra.util.AccountMgr;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
