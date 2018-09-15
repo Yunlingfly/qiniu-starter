@@ -19,8 +19,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 七牛云属性配置
  *
- * @author yunlingfly
- * @create 2018-09-15
+ * @author yunlingfly@csdn
  */
 
 // 装配配置属性

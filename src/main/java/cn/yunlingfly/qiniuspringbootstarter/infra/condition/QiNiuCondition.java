@@ -8,8 +8,7 @@ import org.springframework.util.StringUtils;
 /**
  * 校验类
  *
- * @author yunlingfly
- * @create 2018-09-15
+ * @author yunlingfly@csdn
  */
 
 public class QiNiuCondition implements Condition {

@@ -9,8 +9,7 @@ import javax.annotation.PreDestroy;
 /**
  * 七牛云属性配置
  *
- * @author yunlingfly
- * @create 2018-09-15
+ * @author yunlingfly@csdn
  */
 
 @Component

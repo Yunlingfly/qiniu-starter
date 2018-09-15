@@ -5,6 +5,10 @@ import com.qiniu.http.Response;
 
 import java.io.File;
 
+/**
+ * IQiniuService接口
+ */
+
 public interface IQiniuService {
     /**
      * 上传文件
