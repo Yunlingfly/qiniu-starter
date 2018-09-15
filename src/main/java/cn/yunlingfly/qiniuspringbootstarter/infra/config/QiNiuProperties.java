@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
  * @author yunlingfly
  * @create 2018-09-15
  */
+
 @Component
 @ConfigurationProperties(prefix = "qiniu")
 public class QiNiuProperties {
@@ -25,6 +26,8 @@ public class QiNiuProperties {
      * 一般设置为cdn
      */
     private String cdnPrefix = "cdn";
+
+    private Boolean enabled;
 
     public String getAccessKey() {
         return accessKey;
@@ -56,5 +59,13 @@ public class QiNiuProperties {
 
     public void setCdnPrefix(String cdnPrefix) {
         this.cdnPrefix = cdnPrefix;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
