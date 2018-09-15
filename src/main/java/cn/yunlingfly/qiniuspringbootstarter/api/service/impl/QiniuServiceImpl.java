@@ -2,15 +2,19 @@ package cn.yunlingfly.qiniuspringbootstarter.api.service.impl;
 
 import cn.yunlingfly.qiniuspringbootstarter.api.service.IQiniuService;
 import cn.yunlingfly.qiniuspringbootstarter.infra.config.QiNiuProperties;
+import com.alibaba.fastjson.JSON;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.File;
 
 /**
@@ -60,7 +64,9 @@ public class QiniuServiceImpl implements IQiniuService {
             response = this.uploadManager.put(filePath, key, getUploadToken(key));
         } else {
             System.out.println("使用文件路径上传");
-            response = this.uploadManager.put(filePath, key, getUploadToken());
+            String token=getUploadToken();
+            System.out.println("获得token："+token);
+            response = this.uploadManager.put(filePath, key, token);
             int retry = 0;
             while (response.needRetry() && retry < 3) {
                 response = this.uploadManager.put(filePath, key, getUploadToken());
@@ -87,6 +93,14 @@ public class QiniuServiceImpl implements IQiniuService {
      * 获取上传凭证，普通上传
      */
     private String getUploadToken() {
-        return this.auth.uploadToken(qiNiuProperties.getBucket(), null);
+        return this.auth.uploadToken(qiNiuProperties.getBucket());
+    }
+
+    /**
+     * 这个注解在这里没实际用处，就是为了方便在该类构造完成后打印日志，看看配置信息是否加载到配置类中了
+     */
+    @PostConstruct
+    public void init() {
+        System.out.println("returnBody"+ JSON.toJSONString(qiNiuProperties));
     }
 }

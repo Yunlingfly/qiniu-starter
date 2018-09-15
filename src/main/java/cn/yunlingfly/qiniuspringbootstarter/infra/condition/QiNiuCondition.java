@@ -18,7 +18,7 @@ public class QiNiuCondition implements Condition {
     private static Logger logger = LoggerFactory.getLogger(QiNiuCondition.class);
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-        String property = context.getEnvironment().getProperty("qiniu.access_key");
+        String property = context.getEnvironment().getProperty("qiniu.access-key");
         if (StringUtils.isEmpty(property)) {
             throw new RuntimeException("没有七牛云的配置");
         } else {
