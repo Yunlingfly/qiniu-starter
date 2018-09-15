@@ -17,7 +17,7 @@ public class QiNiuCondition implements Condition {
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         String ak = context.getEnvironment().getProperty("qiniu.access-key");
         String sk = context.getEnvironment().getProperty("qiniu.secret-key");
-        String bucketName = context.getEnvironment().getProperty("bucket-name");
+        String bucketName = context.getEnvironment().getProperty("qiniu.bucket-name");
 
         if (StringUtils.isEmpty(ak) || StringUtils.isEmpty(sk) || StringUtils.isEmpty(bucketName)) {
             throw new RuntimeException("缺少七牛云的配置");

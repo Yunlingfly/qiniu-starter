@@ -78,21 +78,21 @@ public class QiniuServiceImpl implements IQiniuService {
 
     @Override
     public void deleteFile(String key) throws QiniuException {
-        bucketManager.delete(qiNiuProperties.getBucket(), key);
+        bucketManager.delete(qiNiuProperties.getBucketName(), key);
     }
 
     /**
      * 获取上传凭证，覆盖上传
      */
     private String getUploadToken(String fileName) {
-        return this.auth.uploadToken(qiNiuProperties.getBucket(), fileName);
+        return this.auth.uploadToken(qiNiuProperties.getBucketName(), fileName);
     }
 
     /**
      * 获取上传凭证，普通上传
      */
     private String getUploadToken() {
-        return this.auth.uploadToken(qiNiuProperties.getBucket());
+        return this.auth.uploadToken(qiNiuProperties.getBucketName());
     }
 
     /**
