@@ -19,8 +19,12 @@ public class QiNiuCondition implements Condition {
         String sk = context.getEnvironment().getProperty("qiniu.secret-key");
         String bucketName = context.getEnvironment().getProperty("qiniu.bucket-name");
 
-        if (StringUtils.isEmpty(ak) || StringUtils.isEmpty(sk) || StringUtils.isEmpty(bucketName)) {
-            throw new RuntimeException("缺少七牛云的配置");
+        if (StringUtils.isEmpty(ak)) {
+            throw new RuntimeException("Lack of qiniuyun configuration:access-key");
+        } else if (StringUtils.isEmpty(sk)) {
+            throw new RuntimeException("Lack of qiniuyun configuration:qiniu.secret-key");
+        } else if (StringUtils.isEmpty(bucketName)) {
+            throw new RuntimeException("Lack of qiniuyun configuration:qiniu.bucket-name");
         } else {
             return true;
         }
