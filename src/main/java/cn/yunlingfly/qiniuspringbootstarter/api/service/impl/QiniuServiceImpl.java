@@ -7,17 +7,15 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import com.qiniu.util.StringMap;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 
 @Service
 public class QiniuServiceImpl implements IQiniuService {
-    private Logger logger = Logger.getLogger(this.getClass());	//log4j日志
+    private Logger logger = Logger.getLogger(this.getClass());    //log4j日志
 
     @Autowired
     private UploadManager uploadManager;
@@ -28,53 +26,51 @@ public class QiniuServiceImpl implements IQiniuService {
     @Autowired
     private QiNiuProperties qiNiuProperties;
 
-    private StringMap putPolicy;
-
     @Override
-    public Response uploadFile(File file, String name) throws QiniuException {
-        Response response = this.uploadManager.put(file, name, getUploadToken(name));
-        int retry = 0;
-        while (response.needRetry() && retry < 3) {
-            response = this.uploadManager.put(file, name, getUploadToken());
-            retry++;
+    public Response uploadFile(File file, String key, boolean existed) throws QiniuException {
+        Response response;
+        // 覆盖上传
+        if (existed) {
+            response = this.uploadManager.put(file, key, getUploadToken(key));
+        } else {
+            System.out.println("使用文件上传");
+            response = this.uploadManager.put(file, key, getUploadToken());
+            int retry = 0;
+            while (response.needRetry() && retry < 3) {
+                response = this.uploadManager.put(file, key, getUploadToken());
+                retry++;
+            }
         }
+
         return response;
     }
 
     @Override
-    public Response uploadFile(File file) throws QiniuException {
-        return null;
-    }
-
-    @Override
-    public Response uploadFile(String filePath) throws QiniuException {
-        return null;
-    }
-
-    @Override
-    public void delete(String key) throws QiniuException {
-        try {
-            bucketManager.delete(qiNiuProperties.getBucket(), key);
-        } catch (QiniuException e) {
-            if (e.response.statusCode == 612) {
-                logger.info("文件：" + key + "不存在");
-                System.out.println("文件不存在");
-            } else {
-                e.printStackTrace();
+    public Response uploadFile(String filePath, String key, boolean existed) throws QiniuException {
+        Response response;
+        // 覆盖上传
+        if (existed) {
+            response = this.uploadManager.put(filePath, key, getUploadToken(key));
+        } else {
+            System.out.println("使用文件路径上传");
+            response = this.uploadManager.put(filePath, key, getUploadToken());
+            int retry = 0;
+            while (response.needRetry() && retry < 3) {
+                response = this.uploadManager.put(filePath, key, getUploadToken());
+                retry++;
             }
         }
+
+        return response;
     }
 
-    @PostConstruct
-    public void init() {
-        this.putPolicy = new StringMap();
-        putPolicy.put("returnBody", "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"width\":$(imageInfo.width), \"height\":${imageInfo.height}}");
+    @Override
+    public void deleteFile(String key) throws QiniuException {
+        bucketManager.delete(qiNiuProperties.getBucket(), key);
     }
 
     /**
      * 获取上传凭证，覆盖上传
-     *
-     * @return
      */
     private String getUploadToken(String fileName) {
         return this.auth.uploadToken(qiNiuProperties.getBucket(), fileName);
@@ -82,8 +78,6 @@ public class QiniuServiceImpl implements IQiniuService {
 
     /**
      * 获取上传凭证，普通上传
-     *
-     * @return
      */
     private String getUploadToken() {
         return this.auth.uploadToken(qiNiuProperties.getBucket(), null);

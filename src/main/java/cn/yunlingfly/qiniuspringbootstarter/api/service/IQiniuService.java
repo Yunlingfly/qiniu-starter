@@ -9,33 +9,27 @@ import java.io.InputStream;
 public interface IQiniuService {
     /**
      * 上传文件
-     * <p>文件覆盖上传</p>
+     * <p>文件上传</p>
      *
      * @param file
+     * @param key
+     * @param existed
      * @return
      * @throws QiniuException
      */
-    Response uploadFile(File file, String name) throws QiniuException;
-
-    /**
-     * 上传文件
-     * <p>文件普通上传</p>
-     *
-     * @param file
-     * @return
-     * @throws QiniuException
-     */
-    Response uploadFile(File file) throws QiniuException;
+    Response uploadFile(File file, String key, boolean existed) throws QiniuException;
 
     /**
      * 上传文件
      * <p>文件路径上传</p>
      *
      * @param filePath
+     * @param key
+     * @param existed
      * @return
      * @throws QiniuException
      */
-    Response uploadFile(String filePath) throws QiniuException;
+    Response uploadFile(String filePath, String key, boolean existed) throws QiniuException;
 
     /**
      * 删除
@@ -44,5 +38,5 @@ public interface IQiniuService {
      * @return
      * @throws QiniuException
      */
-    void delete(String key) throws QiniuException;
+    void deleteFile(String key) throws QiniuException;
 }

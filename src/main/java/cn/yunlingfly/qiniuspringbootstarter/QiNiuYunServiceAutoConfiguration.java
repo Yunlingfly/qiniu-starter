@@ -20,11 +20,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 // 自动装配这个properties类，读取yaml自定义内容
 @EnableConfigurationProperties(QiNiuProperties.class)
-// service类
+// service类，@ConditionalOnClass某个 Class 位于类路径上，才会实例化一个Bean。也就是说，当classpath下发现该类的情况下进行实例化。
 @ConditionalOnClass(IQiniuService.class)
 // 校验类
 @Conditional(QiNiuCondition.class)
-// 校验前缀
+// 当配置文件中 qiniu.enable 的值为 true 时，实例化此类。默认值为true
 @ConditionalOnProperty(prefix = "qiniu",value = "enabled",matchIfMissing = true)
 public class QiNiuYunServiceAutoConfiguration {
     @Autowired
