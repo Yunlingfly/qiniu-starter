@@ -24,7 +24,7 @@ public class QiNiuProperties {
     /**
      * 存储空间名字
      */
-    private String bucket = "bucket-name";
+    private String bucketName = "bucket-name";
     /**
      * 一般设置为cdn
      */
@@ -46,12 +46,12 @@ public class QiNiuProperties {
         this.secretKey = secretKey;
     }
 
-    public String getBucket() {
-        return bucket;
+    public String getBucketName() {
+        return bucketName;
     }
 
-    public void setBucket(String bucket) {
-        this.bucket = bucket;
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
     }
 
     public String getCdnPrefix() {
