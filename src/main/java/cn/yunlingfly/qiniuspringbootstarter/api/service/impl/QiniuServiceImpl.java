@@ -100,6 +100,6 @@ public class QiniuServiceImpl implements IQiniuService {
      */
     @PostConstruct
     public void init() {
-        logger.info("qiNiuProperties: {}", qiNiuProperties);
+        logger.info("qiNiuProperties: {}", JSON.toJSONString(qiNiuProperties));
     }
 }
