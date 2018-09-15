@@ -63,8 +63,8 @@ public class QiniuServiceImpl implements IQiniuService {
             response = this.uploadManager.put(filePath, key, getUploadToken(key));
         } else {
             System.out.println("使用文件路径上传");
-            String token=getUploadToken();
-            System.out.println("获得token："+token);
+            String token = getUploadToken();
+            System.out.println("获得token：" + token);
             response = this.uploadManager.put(filePath, key, token);
             int retry = 0;
             while (response.needRetry() && retry < 3) {

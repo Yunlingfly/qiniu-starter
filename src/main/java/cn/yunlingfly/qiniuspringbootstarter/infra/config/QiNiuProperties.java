@@ -30,8 +30,6 @@ public class QiNiuProperties {
      */
     private String cdnPrefix = "cdn";
 
-    private Boolean enabled;
-
     public String getAccessKey() {
         return accessKey;
     }
@@ -62,18 +60,5 @@ public class QiNiuProperties {
 
     public void setCdnPrefix(String cdnPrefix) {
         this.cdnPrefix = cdnPrefix;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @PostConstruct
-    public void init(){
-        System.out.println("实例化QiNiuProperties...");
     }
 }

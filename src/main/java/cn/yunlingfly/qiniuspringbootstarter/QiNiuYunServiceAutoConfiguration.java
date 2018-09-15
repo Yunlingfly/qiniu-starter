@@ -32,7 +32,7 @@ import org.springframework.context.annotation.Configuration;
 // 校验类
 @Conditional(QiNiuCondition.class)
 // 当配置文件中 qiniu.enable 的值为 true 时，实例化此类。默认值为true
-@ConditionalOnProperty(prefix = "qiniu",value = "enabled",matchIfMissing = true)
+@ConditionalOnProperty(prefix = "qiniu", value = "true", matchIfMissing = true)
 public class QiNiuYunServiceAutoConfiguration {
     @Autowired
     private QiNiuProperties qiNiuYunProperties;
