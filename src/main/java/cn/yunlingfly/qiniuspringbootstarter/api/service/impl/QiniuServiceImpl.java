@@ -8,13 +8,12 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import com.qiniu.util.StringMap;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.io.File;
 
 /**
@@ -26,7 +25,7 @@ import java.io.File;
 
 @Service
 public class QiniuServiceImpl implements IQiniuService {
-    private Logger logger = Logger.getLogger(this.getClass());    //log4j日志
+    private static final Logger logger = LoggerFactory.getLogger(QiniuServiceImpl.class);
 
     @Autowired
     private UploadManager uploadManager;
@@ -101,6 +100,6 @@ public class QiniuServiceImpl implements IQiniuService {
      */
     @PostConstruct
     public void init() {
-        System.out.println("returnBody"+ JSON.toJSONString(qiNiuProperties));
+        logger.info("qiNiuProperties: {}", qiNiuProperties);
     }
 }
