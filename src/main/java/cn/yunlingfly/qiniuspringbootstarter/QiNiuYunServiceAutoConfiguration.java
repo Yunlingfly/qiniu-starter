@@ -16,6 +16,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 七牛云属性配置
+ *
+ * @author yunlingfly
+ * @create 2018-09-15
+ */
+
 // 装配配置属性
 @Configuration
 // 自动装配这个properties类，读取yaml自定义内容

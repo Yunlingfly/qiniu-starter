@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 /**
  * 七牛云属性配置
  *
- * @author pjmike
- * @create 2018-08-20 11:52
+ * @author yunlingfly
+ * @create 2018-09-15
  */
 @Component
 @ConfigurationProperties(prefix = "qiniu")

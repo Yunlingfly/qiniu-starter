@@ -13,6 +13,13 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 
+/**
+ * service实现类
+ *
+ * @author yunlingfly
+ * @create 2018-09-15
+ */
+
 @Service
 public class QiniuServiceImpl implements IQiniuService {
     private Logger logger = Logger.getLogger(this.getClass());    //log4j日志

@@ -9,7 +9,11 @@ import org.springframework.util.StringUtils;
 
 /**
  * 校验类
+ *
+ * @author yunlingfly
+ * @create 2018-09-15
  */
+
 public class QiNiuCondition implements Condition {
     private static Logger logger = LoggerFactory.getLogger(QiNiuCondition.class);
     @Override
