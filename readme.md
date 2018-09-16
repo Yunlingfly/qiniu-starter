@@ -20,7 +20,7 @@
     qiniu:
       secret-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       access-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      bucket-name: test
+      bucket-name: xxxx
 
 Controller里引用接口：
 
