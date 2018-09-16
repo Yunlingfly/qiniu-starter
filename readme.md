@@ -18,8 +18,8 @@
 修改application.yml添加一下参数：
 
     qiniu:
-      secret-key: E2HvV26ShjnWihyfj8GOfJ2zQGByRAcJuIdVulMx
-      access-key: U7vfxXTqFQ2D6qAzrzz9bguthIfd8dw2TZT2Hge9
+      secret-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      access-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       bucket-name: test
 
 Controller里引用接口：
