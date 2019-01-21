@@ -78,17 +78,18 @@ public class QiniuServiceImpl implements IQiniuService {
     }
 
     /**
+     * 获取上传凭证，普通上传
+     */
+    @Override
+    public String getUploadToken() {
+        return this.auth.uploadToken(qiNiuProperties.getBucketName());
+    }
+
+    /**
      * 获取上传凭证，覆盖上传
      */
     private String getUploadToken(String fileName) {
         return this.auth.uploadToken(qiNiuProperties.getBucketName(), fileName);
-    }
-
-    /**
-     * 获取上传凭证，普通上传
-     */
-    private String getUploadToken() {
-        return this.auth.uploadToken(qiNiuProperties.getBucketName());
     }
 
     /**
