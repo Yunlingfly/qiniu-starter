@@ -5,7 +5,7 @@
 
 	<groupId>cn.yunlingfly</groupId>
 	<artifactId>qiniu-spring-boot-starter</artifactId>
-	<version>0.1-RELEASE</version>
+	<version>0.2-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>qiniu-spring-boot-starter</name>
