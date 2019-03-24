@@ -4,7 +4,7 @@
 
 博客：https://blog.csdn.net/weixin_38187317/article/details/82723758
 
-2018-9-12
+2019-3-24 已更新0.2-RELEASE新增获取getUploadToken()方法
 
 引入方式：
 
@@ -12,7 +12,7 @@
 	<dependency>
 		<groupId>cn.yunlingfly</groupId>
 		<artifactId>qiniu-spring-boot-starter</artifactId>
-		<version>0.1-RELEASE</version>
+		<version>0.2-RELEASE</version>
 	</dependency>
 
 使用：
@@ -40,7 +40,7 @@ Controller里引用接口：
         return "success";
     }
  
-目前版本qiniuService有三个方法：
+目前版本qiniuService有四个方法：
 
         /**
          * 上传文件
@@ -73,3 +73,12 @@ Controller里引用接口：
          * @throws QiniuException 抛出QiniuException异常
          */
         void deleteFile(String key) throws QiniuException;
+    
+        /**
+         * 获取上传token
+         * <p>获取token</p>
+         *
+         * @return 返回String
+         * @throws QiniuException 抛出QiniuException异常
+         */
+        String getUploadToken() throws QiniuException;
